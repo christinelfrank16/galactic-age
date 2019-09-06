@@ -73,3 +73,16 @@ describe('convert-age', function(){
     expect(convertAge("pluto", galaxy, age)).toEqual(0);
   });
 });
+
+describe('form input check', function(){
+  it('should error on missing returned form input', function(){
+    const inputArray = ["1", "2", "", 1, 5, 9];
+    expect(checkFormInput(inputArray)).toEqual(false);
+  });
+
+  it('should pass on complete returned form input', function(){
+    const inputArray = ["1", "2", "6", 1, 5, 9];
+    expect(checkFormInput(inputArray)).toEqual(false);
+  });
+
+});

@@ -34,7 +34,7 @@ This application provides the user fields to input information about themselves 
 |Application only accepts positive integers as input for age| "#45%" | "Invalid age, please use numeric input" |
 |Application converts user age to corresponding age at each planet in the solar system| 34 | Mercury age: 8.16 |
 |Application displays corresponding planet age as the base integer | 34 | Mercury age: 8|
-|Application requires form input to determine user life expectancy on each planet in the solar system| Empty form value | "Please fill out all sections of form"|
+|Application requires at least one input from each form field to determine user life expectancy on each planet in the solar system| Empty form values | "Please fill out all sections of form"|
 |Application calculates user life expectancy on each planet using form input and planet conditions |Age: 45, Input: Exercises regularly, likes fast food, non-smoker| Normal life expectancy: Live to 808 yrs on Jupiter |
 |Application calculates years past expected life expectancy when user's age is equal to or greater than calculated expectancy |Age: 95, Input: Exercises infrequently, eats healthily, non-smoker| Exceeds life expectancy by 15 years on Mars|
 
