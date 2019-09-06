@@ -7,3 +7,10 @@ export function checkAgeInput(age){
   }
   return isAgeAccepted;
 }
+
+export function convertAge(planetName, galaxy, earthYears){
+  const planetYearDays = galaxy[planetName.toLowerCase()].orbitalPeriod;
+  const earthYearDays = galaxy.earth.orbitalPeriod;
+  const convertedAge = (earthYears * earthYearDays)/planetYearDays;
+  return Math.floor(convertedAge);
+}
