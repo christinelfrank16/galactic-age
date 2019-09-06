@@ -1,4 +1,4 @@
-import {checkAgeInput, convertAge, checkFormInput, calcExpectedEarthLife, truncateToFirstDecimal, calcExpectedPlanetLife, calcGovPerChange, calcSkillsPerChange, calcPlanetPerChange} from './../src/calculator.js';
+import {checkAgeInput, convertAge, checkFormInput, calcExpectedEarthLife, truncateToFirstDecimal, calcExpectedPlanetLife, calcGovPerChange, calcSkillsPerChange, calcPlanetPerChange, calcAgeDiff} from './../src/calculator.js';
 import {Galaxy} from './../src/galaxy.js';
 
 describe('user-input', function(){
@@ -185,7 +185,7 @@ describe('exceed-expected-life', function(){
     expect(calcExpectedEarthLife(inputArray)).toEqual(85);
     expect(calcExpectedPlanetLife(planet, inputArray)).toEqual(truncateToFirstDecimal(convertedEarthExpAge * 0.75));
     expect(convertAge(planet, age)).toEqual(7.98);
-    expect(calcAgeDiff(age)).toEqual(7.98-truncateToFirstDecimal(convertedEarthExpAge * 0.75));
+    expect(calcAgeDiff(age, planet, inputArray)).toEqual(7.98-truncateToFirstDecimal(convertedEarthExpAge * 0.75));
   });
 
   it('should provide the difference in expected life and age when the age has exceeded the expected life', function(){
@@ -197,6 +197,6 @@ describe('exceed-expected-life', function(){
     expect(calcExpectedEarthLife(inputArray)).toEqual(85);
     expect(calcExpectedPlanetLife(planet, inputArray)).toEqual(truncateToFirstDecimal(convertedEarthExpAge * 0.75));
     expect(convertAge(planet, age)).toEqual(6.3);
-    expect(calcAgeDiff(age)).toEqual(6.3 - truncateToFirstDecimal(convertedEarthExpAge * 0.75));
+    expect(calcAgeDiff(age, planet, inputArray)).toEqual(6.3 - truncateToFirstDecimal(convertedEarthExpAge * 0.75));
   });
 });

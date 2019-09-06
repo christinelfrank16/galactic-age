@@ -21,9 +21,9 @@ export function checkFormInput(formInputArray){
   return isFormComplete;
 }
 
-export function convertAge(planetName, galaxy, earthYears){
-  const planetYearDays = galaxy[planetName.toLowerCase()].orbitalPeriod;
-  const earthYearDays = galaxy.earth.orbitalPeriod;
+export function convertAge(planet, earthYears){
+  const planetYearDays = planet.orbitalPeriod;
+  const earthYearDays = 365.24;
   const convertedAge = (earthYears * earthYearDays)/planetYearDays;
   return truncateToFirstDecimal(convertedAge);
 }
@@ -60,15 +60,14 @@ export function calcExpectedEarthLife(inputArray){
   return expectedAge;
 }
 
-export function calcExpectedPlanetLife(planetName, inputArray, galaxy){
-  const planet = galaxy[planetName];
+export function calcExpectedPlanetLife(planet, inputArray){
   const earthExpAge = calcExpectedEarthLife(inputArray);
 
   let percentChange = calcSkillsPerChange(inputArray);
   percentChange += calcGovPerChange(planet, inputArray[6]);
   percentChange += calcPlanetPerChange(planet);
 
-  let planetExpAge = convertAge(planetName, galaxy, earthExpAge);
+  let planetExpAge = convertAge(planet, earthExpAge);
   planetExpAge = planetExpAge * ((100 + percentChange)/100);
   planetExpAge = truncateToFirstDecimal(planetExpAge);
   return planetExpAge;
@@ -156,4 +155,11 @@ export function calcPlanetPerChange(planet){
     percentChange -= 5;
   }
   return percentChange;
+}
+
+export function calcAgeDiff(age, planet, inputArray){
+  const convCurrAge = convertAge(planet, age);
+  const expPlanetAge = calcExpectedPlanetLife(planet, inputArray);
+
+  return convCurrAge - expPlanetAge;
 }
