@@ -1,4 +1,4 @@
-import {checkAgeInput, convertAge, checkFormInput, calcExpectedEarthLife, truncateToFirstDecimal} from './../src/calculator.js';
+import {checkAgeInput, convertAge, checkFormInput, calcExpectedEarthLife, truncateToFirstDecimal, calcExpectedPlanetLife, calcGovPerChange} from './../src/calculator.js';
 import {Galaxy} from './../src/galaxy.js';
 
 describe('user-input', function(){
@@ -112,11 +112,46 @@ describe('calc-other-planet-expectancy', function(){
     expect(truncateToFirstDecimal(age)).toEqual(23.87);
   });
 
+  it('should calculate percent change of expected life using for planet conditions influence - low skills', function(){
+    const inputArray = ["1", "1", [1, 2, 3], 1, 1, 1, 2];
+    expect(calcSkillsPerChange(inputArray)).toEqual(-20);
+  });
+
+  it('should calculate percent change of expected life using for planet conditions influence - normal skills', function(){
+    const inputArray = ["2", "2", [3, 6, 8], 3, 6, 5, 3];
+    expect(calcSkillsPerChange(inputArray)).toEqual(-10);
+  });
+
+  it('should calculate percent change of expected life using for planet conditions influence - high skills', function(){
+    const inputArray = ["4", "5", [4], 9, 8, 10, 4];
+    expect(calcSkillsPerChange(inputArray)).toEqual(30);
+  });
+
+  it('should calculate percent change of expected life using for selected government influence - cyberocracy', function(){
+    const govPref = 1;
+    expect(calcGovPerChange(galaxy["mars"], govPref)).toEqual(20);
+  });
+
+  it('should calculate percent change of expected life using for selected government influence - galactic democracy', function(){
+    const govPref = 3;
+    expect(calcGovPerChange(galaxy["mars"], govPref)).toEqual(15);
+    expect(calcGovPerChange(galaxy["earth"], govPref)).toEqual(5);
+    expect(calcGovPerChange(galaxy["neptune"], govPref)).toEqual(-5);
+    expect(calcGovPerChange(galaxy["pluto"], govPref)).toEqual(-10);
+  });
+
+  it('should calculate percent change of expected life using for selected government influence - regional governance', function(){
+    const govPref = 4;
+    expect(calcGovPerChange(galaxy["mars"], govPref)).toEqual(galaxy["mars"].regionalGovInfluence);
+    expect(calcGovPerChange(galaxy["mercury"], govPref)).toEqual(galaxy["mercury"].regionalGovInfluence);
+    expect(calcGovPerChange(galaxy["jupiter"], govPref)).toEqual(galaxy["jupiter"].regionalGovInfluence);
+  });
+
   it('should calculate expected planet life using form inputs and planet conditions', function(){
     const inputArray = ["2", "2", [3, 6, 8], 3, 6, 5, 3];
     const planet = "jupiter";
     const convertedEarthExpAge = convertAge("jupiter", galaxy, calcExpectedEarthLife(inputArray)); // Earth age = 85
     expect(convertedEarthExpAge).toEqual(7.14);
-    expect(calcExpectedPlanetLife(planet, inputArray, galaxy)).toEqual(6.6)
+    expect(calcExpectedPlanetLife(planet, inputArray, galaxy)).toEqual(6.58);
   });
 });
