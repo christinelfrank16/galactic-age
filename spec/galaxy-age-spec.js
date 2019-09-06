@@ -1,4 +1,4 @@
-import {checkAgeInput, convertAge, checkFormInput, calcExpectedEarthLife, truncateToFirstDecimal, calcExpectedPlanetLife, calcGovPerChange} from './../src/calculator.js';
+import {checkAgeInput, convertAge, checkFormInput, calcExpectedEarthLife, truncateToFirstDecimal, calcExpectedPlanetLife, calcGovPerChange, calcSkillsPerChange, calcPlanetPerChange} from './../src/calculator.js';
 import {Galaxy} from './../src/galaxy.js';
 
 describe('user-input', function(){
@@ -119,7 +119,7 @@ describe('calc-other-planet-expectancy', function(){
 
   it('should calculate percent change of expected life using for planet conditions influence - normal skills', function(){
     const inputArray = ["2", "2", [3, 6, 8], 3, 6, 5, 3];
-    expect(calcSkillsPerChange(inputArray)).toEqual(-10);
+    expect(calcSkillsPerChange(inputArray)).toEqual(0);
   });
 
   it('should calculate percent change of expected life using for planet conditions influence - high skills', function(){
@@ -136,7 +136,7 @@ describe('calc-other-planet-expectancy', function(){
     const govPref = 3;
     expect(calcGovPerChange(galaxy["mars"], govPref)).toEqual(15);
     expect(calcGovPerChange(galaxy["earth"], govPref)).toEqual(5);
-    expect(calcGovPerChange(galaxy["neptune"], govPref)).toEqual(-5);
+    expect(calcGovPerChange(galaxy["uranus"], govPref)).toEqual(-5);
     expect(calcGovPerChange(galaxy["pluto"], govPref)).toEqual(-10);
   });
 
@@ -147,11 +147,24 @@ describe('calc-other-planet-expectancy', function(){
     expect(calcGovPerChange(galaxy["jupiter"], govPref)).toEqual(galaxy["jupiter"].regionalGovInfluence);
   });
 
+  it('should calculate percent change of expected life using planet conditions', function(){
+    expect(calcPlanetPerChange(galaxy["mercury"])).toEqual(-20);
+    expect(calcPlanetPerChange(galaxy["mars"])).toEqual(10);
+    expect(calcPlanetPerChange(galaxy["saturn"])).toEqual(-15);
+    expect(calcPlanetPerChange(galaxy["pluto"])).toEqual(-5);
+  });
+
   it('should calculate expected planet life using form inputs and planet conditions', function(){
     const inputArray = ["2", "2", [3, 6, 8], 3, 6, 5, 3];
     const planet = "jupiter";
     const convertedEarthExpAge = convertAge("jupiter", galaxy, calcExpectedEarthLife(inputArray)); // Earth age = 85
+
     expect(convertedEarthExpAge).toEqual(7.14);
-    expect(calcExpectedPlanetLife(planet, inputArray, galaxy)).toEqual(6.58);
+    expect(calcPlanetPerChange(galaxy[planet])).toEqual(-30);
+    expect(calcGovPerChange(galaxy[planet], inputArray[6])).toEqual(5);
+    expect(calcSkillsPerChange(inputArray)).toEqual(0);
+
+    expect(calcExpectedPlanetLife(planet, inputArray, galaxy)).toEqual(truncateToFirstDecimal(convertedEarthExpAge * 0.75));
+
   });
 });
