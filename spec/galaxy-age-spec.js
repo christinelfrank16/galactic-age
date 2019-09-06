@@ -1,4 +1,4 @@
-import {checkAgeInput, convertAge, checkFormInput, calcExpectedEarthLife} from './../src/calculator.js';
+import {checkAgeInput, convertAge, checkFormInput, calcExpectedEarthLife, truncateToFirstDecimal} from './../src/calculator.js';
 import {Galaxy} from './../src/galaxy.js';
 
 describe('user-input', function(){
@@ -76,32 +76,48 @@ describe('convert-age', function(){
 
 describe('form input check', function(){
   it('should error on missing returned form input', function(){
-    const inputArray = ["1", "2", "", 1, 5, 9];
+    const inputArray = ["1", "2", "", 1, 5, 9, 5];
     expect(checkFormInput(inputArray)).toEqual(false);
   });
 
   it('should pass on complete returned form input', function(){
-    const inputArray = ["1", "2", [2], 1, 5, 9];
+    const inputArray = ["1", "2", [2], 1, 5, 9, 7];
     expect(checkFormInput(inputArray)).toEqual(true);
   });
 });
 
-describe('calc-life-expectancy', function(){
+describe('calc-earth-life-expectancy', function(){
   it('should calculate expected Earth life using form input variations - low expectancy values', function(){
     const age = 25;
-    const inputArray = ["1", "1", [1, 2, 3], 1, 1, 1];
+    const inputArray = ["1", "1", [1, 2, 3], 1, 1, 1, 2];
     expect(calcExpectedEarthLife(inputArray)).toEqual(65);
   });
-  
+
   it('should calculate expected Earth life using form input variations - normal expectancy values', function(){
     const age = 25;
-    const inputArray = ["2", "2", [3, 6, 8], 3, 6, 5];
+    const inputArray = ["2", "2", [3, 6, 8], 3, 6, 5, 3];
     expect(calcExpectedEarthLife(inputArray)).toEqual(85);
   });
 
   it('should calculate expected Earth life using form input variations - high expectancy values', function(){
     const age = 25;
-    const inputArray = ["4", "5", [4], 9, 8, 10];
+    const inputArray = ["4", "5", [4], 9, 8, 10, 4];
     expect(calcExpectedEarthLife(inputArray)).toEqual(105);
+  });
+});
+
+describe('calc-other-planet-expectancy', function(){
+
+  it('should truncate expected planet life to first 2 digits, no rounding', function(){
+    const age = 23.8773;
+    expect(truncateToFirstDecimal(age)).toEqual(23.87);
+  });
+
+  it('should calculate expected planet life using form inputs and planet conditions', function(){
+    const inputArray = ["2", "2", [3, 6, 8], 3, 6, 5, 3];
+    const planet = "jupiter";
+    const convertedEarthExpAge = convertAge("jupiter", galaxy, calcExpectedEarthLife(inputArray)); // Earth age = 85
+    expect(convertedEarthExpAge).toEqual(7);
+    expect(calcExpectedPlanetLife(planet, inputArray)).toEqual(6.6)
   });
 });
