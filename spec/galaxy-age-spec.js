@@ -33,26 +33,32 @@ describe('convert-age', function(){
   it('should convert input age to Mercury solar years', function(){
     const age = 25;
     expect(convertAge("mercury", galaxy, age)).toEqual(103);
+    expect(Number.isInteger(convertAge("mercury", galaxy, age))).toEqual(true);
   });
   it('should convert input age to Venus solar years', function(){
     const age = 25;
     expect(convertAge("venus", galaxy, age)).toEqual(40);
+    expect(Number.isInteger(convertAge("venus", galaxy, age))).toEqual(true);
   });
   it('should pass input age on as Earth years', function(){
     const age = 25;
     expect(convertAge("earth", galaxy, age)).toEqual(25);
+    expect(Number.isInteger(convertAge("earth", galaxy, age))).toEqual(true);
   });
   it('should convert input age to Mars solar years', function(){
     const age = 25;
     expect(convertAge("mars", galaxy, age)).toEqual(13);
+    expect(Number.isInteger(convertAge("mars", galaxy, age))).toEqual(true);
   });
   it('should convert input age to Jupiter solar years', function(){
     const age = 25;
     expect(convertAge("jupiter", galaxy, age)).toEqual(2);
+    expect(Number.isInteger(convertAge("jupiter", galaxy, age))).toEqual(true);
   });
   it('should convert input age to Saturn solar years', function(){
     const age = 25;
     expect(convertAge("saturn", galaxy, age)).toEqual(0);
+    expect(Number.isInteger(convertAge("saturn", galaxy, age))).toEqual(true);
   });
   it('should convert input age to Uranus solar years', function(){
     const age = 25;
