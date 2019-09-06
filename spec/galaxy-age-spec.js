@@ -1,4 +1,4 @@
-import {checkAgeInput, convertAge} from './../src/calculator.js';
+import {checkAgeInput, convertAge, checkFormInput} from './../src/calculator.js';
 import {Galaxy} from './../src/galaxy.js';
 
 describe('user-input', function(){
@@ -82,7 +82,7 @@ describe('form input check', function(){
 
   it('should pass on complete returned form input', function(){
     const inputArray = ["1", "2", "6", 1, 5, 9];
-    expect(checkFormInput(inputArray)).toEqual(false);
+    expect(checkFormInput(inputArray)).toEqual(true);
   });
 
 });
