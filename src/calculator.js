@@ -14,3 +14,17 @@ export function convertAge(planetName, galaxy, earthYears){
   const convertedAge = (earthYears * earthYearDays)/planetYearDays;
   return Math.floor(convertedAge);
 }
+
+export function checkFormInput(formInputArray){
+  let count = 0
+  let isFormComplete = true;
+  formInputArray.forEach(function(input){
+    if(input){
+      count++;
+    }
+  });
+  if(count !== formInputArray.length){
+    isFormComplete = false
+  }
+  return isFormComplete;
+}
