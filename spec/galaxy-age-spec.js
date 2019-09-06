@@ -81,8 +81,25 @@ describe('form input check', function(){
   });
 
   it('should pass on complete returned form input', function(){
-    const inputArray = ["1", "2", "6", 1, 5, 9];
+    const inputArray = ["1", "2", "[2]", 1, 5, 9];
     expect(checkFormInput(inputArray)).toEqual(true);
   });
+});
 
+describe('calc-life-expectancy', function(){
+  it('should calculate expected Earth life using form input variations - low expectancy values', function(){
+    const age = 25;
+    const inputArray = ["1", "1", "[1, 2, 3]", 1, 1, 1];
+    expect(calcExpectedLife(inputArray)).toEqual(65);
+  });
+  it('should calculate expected Earth life using form input variations - normal expectancy values', function(){
+    const age = 25;
+    const inputArray = ["2", "2", "[3]", 3, 6, 5];
+    expect(calcExpectedLife(inputArray)).toEqual(85);
+  });
+  it('should calculate expected Earth life using form input variations - high expectancy values', function(){
+    const age = 25;
+    const inputArray = ["4", "5", "[4]", 9, 8, 10];
+    expect(calcExpectedLife(inputArray)).toEqual(105);
+  });
 });
