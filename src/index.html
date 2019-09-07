@@ -4,6 +4,67 @@
     <title>Galactic Age</title>
   </head>
   <body>
-
+    <div class="container">
+      <h1>Galactic Age</h1>
+      <h2>Imagine yourself in space, on another planet.</h2>
+      <h3>How old would you be? How old would you be expected to live? What would it be like?</h3>
+      <h3>Answer the quiz below and then hover over each of the planets in the solar system and see!</h3>
+      <img src="/solarsystem.jpg" alt="A picture of the solar system and the planets aligned in a line. Includes pluto.">
+      <form id="info">
+        <h4>How often would you exercise?</h4>
+        <label><input type="radio" name="exercise" value="1">None</label>
+        <label><input type="radio" name="exercise" value="2">1-2x per week</label>
+        <label><input type="radio" name="exercise" value="3">3-4x per week</label>
+        <label><input type="radio" name="exercise" value="4">5+ per week</label>
+        <h4>How would you eat?</h4>
+        <label><input type="radio" name="meal" value="1">Fast Food</label>
+        <label><input type="radio" name="meal" value="2">Moderate amounts of meat and vegetables</label>
+        <label><input type="radio" name="meal" value="3">All or mostly vegetables</label>
+        <label><input type="radio" name="meal" value="4">All or mostly meat</label>
+        <label><input type="radio" name="meal" value="5">Some kind of smoothie-mush thing that has all of the nutrients needed</label>
+        <h4>Other Influences</h4>
+        <label><input type="checkbox" name="influence" value="1">Smoking</label>
+        <label><input type="radio" name="influence" value="2">Risk Taker</label>
+        <label><input type="radio" name="influence" value="3">Sweet Tooth</label>
+        <label><input type="radio" name="influence" value="4">None Of These</label>
+        <label><input type="radio" name="influence" value="5">Drink Alcohol</label>
+        <label><input type="radio" name="influence" value="5">Extremely Health Conscious</label>
+        <label><input type="radio" name="influence" value="5">Overweight</label>
+        <div class="skill">
+          <h4>Technical Skills</h4>
+          <p>(1 = None, 5 = Moderate, 10 = Expert at at least one topic)</p>
+          <div class="slidecontainer">
+            <input type="range" min="1" max="10" value="5.5" class="slider range" id="technical">
+          </div>
+          <p> Value: <span class="slider-value" id="technical-value"></span></p>
+        </div>
+        <div class="skill">
+          <h4>Social Skills</h4>
+          <p>(1 = Very Introverted, 5 = Neutral, 10 = Very Extroverted)</p>
+          <div class="slidecontainer">
+            <input type="range" min="1" max="10" value="5.5" class="slider range" id="social">
+          </div>
+          <p> Value: <span class="slider-value" id="social-value"></span></p>
+        </div>
+        <div class="skill">
+          <h4>Adaptability</h4>
+          <p>(1 = Not at All, 5 = Somewhat Flexible, 10 = Extremely Adaptable)</p>
+          <div class="slidecontainer">
+            <input type="range" min="1" max="10" value="5.5" class="slider range" id="adapt">
+          </div>
+          <p> Value: <span class="slider-value" id="adapt-value"></span></p>
+        </div>
+        <div class="gov">
+          <h4>What will the government be like?</h4>
+          <label><input type="radio" name="government" value="1">Cyberocracy</label>
+          <label><input type="radio" name="government" value="2">AI Overlord</label>
+          <label><input type="radio" name="government" value="3">Galactic Democracy</label>
+          <label><input type="radio" name="government" value="4">Regional Governance</label>
+          <label><input type="radio" name="government" value="5">Paleolithic</label>
+          <label><input type="radio" name="government" value="6">Demarchy</label>
+          <label><input type="radio" name="government" value="7">Pluarchy</label>
+        </div>
+      </form>
+    </div>
   </body>
 </html>
