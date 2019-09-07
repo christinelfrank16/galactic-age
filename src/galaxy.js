@@ -86,7 +86,6 @@ export class Galaxy {
   }
 
   orderRegionalGovInfl(){
-    debugger
     const planets = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto"];
     let influences = [5,10,10,25,0,-5,-10,-15,-25];
     for(let i=1; i <= 9; i++){
