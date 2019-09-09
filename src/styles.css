@@ -1,0 +1,36 @@
+body {
+  background-image: url('http://giphygifs.s3.amazonaws.com/media/PzYUZGyzTlVpC/giphy.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.jumbotron, #quiz {
+  background-color: black;
+  opacity: 0.7;
+  border-radius: 8px;
+}
+
+#i-solarsystem {
+  text-align: center;
+  background-color: black;
+  opacity: 0.75;
+  border-radius: 8px;
+  margin-bottom: 1em;
+}
+
+#quiz {
+  padding: 1em;
+}
+
+.group {
+  margin-left: 1em;
+  margin-bottom: 2em;
+}
+
+#quiz label {
+  margin: 0 5px;
+}
+#quiz input {
+  margin-right: 3px;
+}
