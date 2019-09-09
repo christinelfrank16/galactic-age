@@ -5,7 +5,7 @@ body {
   color: white;
 }
 
-.jumbotron, #quiz {
+.jumbotron, #quiz, #results {
   background-color: black;
   opacity: 0.7;
   border-radius: 8px;
@@ -17,6 +17,19 @@ body {
   opacity: 0.75;
   border-radius: 8px;
   margin-bottom: 1em;
+}
+
+#results {
+  border-radius: 8px;
+  margin-bottom: 1em;
+  padding: 1em;
+  display: none;
+}
+
+.missing-input {
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 #quiz {
