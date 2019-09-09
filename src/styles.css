@@ -5,10 +5,17 @@ body {
   color: white;
 }
 
-.jumbotron, #quiz, #results {
+.jumbotron, #quiz, #results, #ageInput {
   background-color: black;
   opacity: 0.7;
   border-radius: 8px;
+}
+
+#ageInput {
+  display: none;
+  border-radius: 8px;
+  margin-bottom: 1em;
+  padding: 1em;
 }
 
 #i-solarsystem {
@@ -19,11 +26,12 @@ body {
   margin-bottom: 1em;
 }
 
+
 #results {
+  display: none;
   border-radius: 8px;
   margin-bottom: 1em;
   padding: 1em;
-  display: none;
 }
 
 .missing-input {
@@ -57,6 +65,74 @@ body {
   font-style: oblique;
   font-weight: bold;
 }
+
+/* Planets */
+#mercury {
+  width: 16px;
+}
+#mercury:hover {
+  width: 80px;
+}
+
+#venus {
+  width: 33px;
+}
+#venus:hover {
+  width: 90px;
+}
+
+#earth {
+  width: 30px;
+}
+#earth:hover {
+  width: 90px;
+}
+
+#mars {
+  width: 19px;
+}
+#mars:hover {
+  width: 80px;
+}
+
+#jupiter {
+  width: 67px;
+}
+#jupiter:hover {
+  width: 100px;
+}
+
+#saturn {
+  width: 59px;
+}
+#saturn:hover {
+  width: 110px;
+}
+
+#uranus {
+  width: 25px;
+}
+#uranus:hover {
+  width: 80px;
+}
+
+#neptune {
+  width: 32px;
+}
+#neptune:hover {
+  width: 80px;
+}
+
+#pluto {
+  width: 11px;
+}
+#pluto:hover {
+  width: 55px;
+}
+
+
+
+
 
 .range {
   -webkit-appearance: none;  /* Override default CSS styles */

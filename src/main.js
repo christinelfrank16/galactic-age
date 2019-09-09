@@ -3,14 +3,21 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/js/dist/tooltip';
 import './styles.css';
-import solarSystemImg from './images/solarsystem';
-import planetImg from './images/planet';
+import sun from './images/sun';
+import mercury from './images/mercury';
+import venus from './images/venus';
+import earth from './images/earth';
+import mars from './images/mars';
+import jupiter from './images/jupiter';
+import saturn from './images/saturn';
+import uranus from './images/uranus';
+import neptune from './images/neptune';
+import pluto from './images/pluto';
 import {Galaxy} from './galaxy.js';
 import {checkAgeInput, convertAge, checkFormInput, calcExpectedEarthLife, calcExpectedPlanetLife, calcAgeDiff} from './calculator.js';
 
 $(document).ready(function(){
-  let ssImg = $("#solarSystem");
-  ssImg.attr("src", solarSystemImg);
+  assignImgSrcs();
   let galaxy = new Galaxy();
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
@@ -20,32 +27,37 @@ $(document).ready(function(){
   $("#info").submit(function(event){
     event.preventDefault();
     const quizResults = getQuizResults();
+    $("#results").removeClass('missing-input');
     if(!checkFormInput(quizResults)){
-      missingInput();
+      missingInput("Please select options from all sections of quiz.");
     } else {
-      makeAgeForm();
+      $('#ageInput').show();
+      $('#quiz').hide();
     }
     $('#results').show();
   });
 
-  $(".slidecontainer").on("input", function(){
-    updateSliderValues();
+  $("#ageForm").submit(function(event){
+    event.preventDefault();
+    $('#results').hide();
+    $("#results").removeClass('missing-input');
+    const age = $("#age").val();
+    if(age === "" || !checkAgeInput(age)){
+      missingInput("Please enter age as a positive whole number.");
+      $('#results').show();
+    } else {
+      $('#results').hide();
+    }
+
+
+    $(".slidecontainer").on("input", function(){
+      updateSliderValues();
+    });
   });
 });
 
-function makeAgeForm(){
-  const ageForm = `
-    <form id="age">
-      <label for="age">Enter your age:</label>
-      <input id="age" type="text">
-      <button type="submit" name="button"> Submit Age</button>
-    </form>
-  `
-  $('#results').html(ageForm);
-}
-
-function missingInput(){
-  $("#results").text("Please select options from all sections of quiz.");
+function missingInput(message){
+  $("#results").text(message);
   $("#results").addClass('missing-input');
 }
 
@@ -70,4 +82,27 @@ function updateSliderValues(){
 
   const adapt = $("#adapt").val();
   $("#adapt-value").text(adapt);
+}
+
+function assignImgSrcs(){
+  let sunImg = $("#sun");
+  sunImg.attr("src", sun);
+  let mercImg = $("#mercury");
+  mercImg.attr("src", mercury);
+  let venImg = $("#venus");
+  venImg.attr("src", venus);
+  let earImg = $("#earth");
+  earImg.attr("src", earth);
+  let marsImg = $("#mars");
+  marsImg.attr("src", mars);
+  let jupImg = $("#jupiter");
+  jupImg.attr("src", jupiter);
+  let satImg = $("#saturn");
+  satImg.attr("src", saturn);
+  let urImg = $("#uranus");
+  urImg.attr("src", uranus);
+  let nepImg = $("#neptune");
+  nepImg.attr("src", neptune);
+  let pluImg = $("#pluto");
+  pluImg.attr("src", pluto);
 }
