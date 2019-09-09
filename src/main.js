@@ -14,4 +14,16 @@ $(document).ready(function(){
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   });
+  updateSliderValues();
 });
+
+function updateSliderValues(){
+  const technical = $("#technical").val();
+  $("#technical-value").text(technical);
+
+  const social = $("#social").val();
+  $("#social-value").text(social);
+
+  const adapt = $("#adapt").val();
+  $("#adapt-value").text(adapt);
+}

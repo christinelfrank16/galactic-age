@@ -35,6 +35,16 @@ body {
   margin-right: 3px;
 }
 
+#info-submit {
+  text-align: center;
+}
+
+#info-submit button {
+  width: 200px;
+  font-style: oblique;
+  font-weight: bold;
+}
+
 .range {
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
