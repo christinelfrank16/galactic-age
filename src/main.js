@@ -48,7 +48,9 @@ $(document).ready(function(){
     } else {
       $('#results').hide();
     }
-
+    // TODO: Add results based on users click
+    // $("img").click(function(){
+    // });
 
     $(".slidecontainer").on("input", function(){
       updateSliderValues();
