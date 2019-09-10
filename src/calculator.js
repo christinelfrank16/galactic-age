@@ -161,5 +161,5 @@ export function calcAgeDiff(age, planet, inputArray){
   const convCurrAge = convertAge(planet, age);
   const expPlanetAge = calcExpectedPlanetLife(planet, inputArray);
 
-  return convCurrAge - expPlanetAge;
+  return truncateToFirstDecimal(convCurrAge - expPlanetAge);
 }
