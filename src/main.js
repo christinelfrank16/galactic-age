@@ -133,7 +133,7 @@ function makePlanetResults(age, planetName, planetAge, expectedLifeSpan, ageDiff
     case "saturn":
       resultsString += ` Many folk have come here for the beauty of the Rings. Depending on the angle of light from the sun, they can be spectacular and inspiring.`;
       if(ageDiff > 0){
-        resultsString += ` This is why you used up all of your money to come here from Mars, and it was well worth it. Most days, you get at least one clear glimpse of them and they put you in awe every time. Maybe that is why you have lived </strong>${ageDiff}</strong> past your expected life span: those few moments of beauty.`;
+        resultsString += ` This is why you used up all of your money to come here from Mars, and it was well worth it. Most days, you get at least one clear glimpse of them and they put you in awe every time. Maybe that is why you have lived <strong>${ageDiff}</strong> past your expected life span: those few moments of beauty.`;
       } else {
         resultsString += ` But they don't hold those or similar emotions for you. Your ex decided that being able to see them almost daily would be a life-changer. Turns out it was true: your ex took all your money and moved back to Mercury because the pods bobbled too much. ... Didn't say a word to you either. You expect to live to <strong>${expectedLifeSpan}</strong>, but it won't be happily and will probably be alone.`;
       }
@@ -147,6 +147,21 @@ function makePlanetResults(age, planetName, planetAge, expectedLifeSpan, ageDiff
       }
       break;
     case "neptune":
+    resultsString += ` You came here to explore and discover new things. You have made impressive and ground-breaking discoveries on other planets: finding evidence of past life on Mars, possible bacteria on meteors, and what could only be ancient remains of some other being on Jupiter. That said, you have debunked many and more stories of monsters and aliens that are still alive and that's why you came this time.`;
+    if(ageDiff > 0){
+      resultsString += ` The locals tell a story of an alien that bumps into the pods in curiosity (or hunger) of what is inside. Scientists have come in the past and found nothing, and those who went to the core never came back. You've lived <strong>${ageDiff}</strong> past your expected age, and know well the dangers of going to a gasseous planet's core. The heat alone is almost guaranteed to kill you unless you are well equiped; you are as such, and so will be exploring the core tomorrow and need your rest; conveniently the pod rocks you gently to sleep...`;
+    } else {
+        resultsString += ` You think on this as you stare into the maw of a giant alien-creature. You have never expected to be in this position of impossible doom and looked forward to living a full life of <strong>${expectedLifeSpan}</strong>. What other creatures have evaded you in the past if this one is here breathing down your neck as you try to scuttle away in your tank-ship. You calculate the probability of making it back to the region of atmosphere with a higher concentration of methane in hopes that the creature won't be able to handle the poisonous gas in high doses: it's low. You try anyway...`;
+    }
+      break;
+
+    case "pluto":
+      resultsString += ` Anything goes here; this planet is known to slowly drive people mad because of the low gravity. The advanced gravity technology has never made it out to the far ends of the galaxy, and so the health of the population suffers for it.`;
+      if(ageDiff > 0){
+        resultsString += ` You have already reached a state of insanity. Nothing is as what it seems. You've lived <strong>${ageDiff}</strong> past your expected life, and you don't know how much longer you can go on. It's hard on your psychy to see darting shadows at the corner of your eye whenever you glance out of a window to the planet floor. Or hear whispers of nothings when no one else is around. Maybe there are other <em>things</em> out in the universe that humans can't experience stright on.. You will never know for sure.`;
+      } else {
+        resultsString += ` You are getting off of this rock if you have anything to say for it. The long-time residents on this planet are crazy and there have been times you've feared for your life. You agree that this planet is strangely silent for being populated, and that it is easy to get on edge if some things are though on too long, but you fear you are going insane too. You have gathered your things together and are booked on the next ship to Uranus. Hopefully there, you can live out to your expected life of <strong>${expectedLifeSpan}</strong> <em>without</em> going crazy.`;
+      }
       break;
   }
 
