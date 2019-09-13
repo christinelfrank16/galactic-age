@@ -10,9 +10,6 @@ This application provides the user fields to input information about themselves 
 
 ## Setup/Installation Requirements
 
-#### View Hosted Site
-* Go to: (N/A - to be updated)
-
 #### View a local version of this Site
 * Clone this repository to your desktop
 * Open a command line terminal and route to the local repository (command: cd desktop/galactic-age)
